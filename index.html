@@ -48,7 +48,7 @@ a {
     <h2><br /><br /><br />更新內容</h2>
 	<hr align="left" width="25%">
 	<h4><br />一、 因應大小爆傷合併，更動爆擊相關部分之程式碼，歡迎大家幫忙檢測</h4>
-	<h4>二、 增加破防狀態之判定，恰可破防時之效益倍率分母為恰可破防之點法</h4>
+	<h4>二、 增加破防狀態之判定，恰可破防時之效益倍率不計無視效益</h4>
   
   <!-- Photo_1 Section -->
   <div id="photos_1">
@@ -172,6 +172,7 @@ a {
 
 			var main_level, sub_level, chance_level, maxmin_level, boss_level, total_level, ignore_level;
 			var ratio = 0.99999;
+			var ratio_no_attack;
 			for (i=0; i<45; i++)
 				for (j=0; j<chance_bound; j++)
 					for (k=0; k<11; k++)
@@ -187,6 +188,7 @@ a {
 										total_level = M_bosstotal[l][1];
 										ignore_level = m;
 										ratio = R_attribute[i] * R_critical[j][k] * R_damage[l] * R_attack[m];
+										ratio_no_attack = R_attribute[i] * R_critical[j][k] * R_damage[l];
 										}
 
 			document.getElementById("out_00").value = main_level;
@@ -196,11 +198,14 @@ a {
 			document.getElementById("out_05").value = total_level;
 			document.getElementById("out_06").value = boss_level;
 			document.getElementById("out_07").value = ignore_level;
-			document.getElementById("out_08").value = ratio.toFixed(6);
-			if (ignore_bound == 0)
+			if (ignore_bound == 0) {
+				document.getElementById("out_08").value = ratio.toFixed(6);
 				document.getElementById("out_09").value = "可以破防";
-			else
+			}
+			else {
+				document.getElementById("out_08").value = ratio_no_attack.toFixed(6);
 				document.getElementById("out_09").value = "恰可破防";
+			}
 			}
 		}
 	</script>
@@ -325,6 +330,7 @@ a {
 
 			var hpp_level, str_level, chance_level, maxmin_level, boss_level, total_level, ignore_level;
 			var ratio = 0.99999;
+			var ratio_no_attack;
 			for (i1=0; i1<11; i1++)
 			for (i2=0; i2<11; i2++)
 				for (j=0; j<chance_bound; j++)
@@ -341,6 +347,7 @@ a {
 										total_level = M_bosstotal[l][1];
 										ignore_level = m;
 										ratio = R_attribute[i1][i2] * R_critical[j][k] * R_damage[l] * R_attack[m];
+										ratio_no_attack = R_attribute[i1][i2] * R_critical[j][k] * R_damage[l];
 										}
 
 			document.getElementById("out_11").value = hpp_level;
@@ -350,11 +357,14 @@ a {
 			document.getElementById("out_15").value = total_level;
 			document.getElementById("out_16").value = boss_level;
 			document.getElementById("out_17").value = ignore_level;
-			document.getElementById("out_18").value = ratio.toFixed(6);
-			if (ignore_bound == 0)
+			if (ignore_bound == 0) {
+				document.getElementById("out_18").value = ratio.toFixed(6);
 				document.getElementById("out_19").value = "可以破防";
-			else
+			}
+			else {
+				document.getElementById("out_18").value = ratio_no_attack.toFixed(6);
 				document.getElementById("out_19").value = "恰可破防";
+			}
 			}
 		}
 	</script>
@@ -487,6 +497,7 @@ a {
 
 			var str_level, dex_level, luk_level, chance_level, maxmin_level, boss_level, total_level, ignore_level;
 			var ratio = 0.99999;
+			var ratio_no_attack;
 			for (i=0; i<31; i++)
 				for (j=0; j<chance_bound; j++)
 					for (k=0; k<11; k++)
@@ -503,6 +514,7 @@ a {
 										total_level = M_bosstotal[l][1];
 										ignore_level = m;
 										ratio = R_attribute[i] * R_critical[j][k] * R_damage[l] * R_attack[m];
+										ratio_no_attack = R_attribute[i] * R_critical[j][k] * R_damage[l];
 										}
 
 			document.getElementById("out_20").value = str_level;
@@ -513,11 +525,14 @@ a {
 			document.getElementById("out_25").value = total_level;
 			document.getElementById("out_26").value = boss_level;
 			document.getElementById("out_27").value = ignore_level;
-			document.getElementById("out_28").value = ratio.toFixed(6);
-			if (ignore_bound == 0)
+			if (ignore_bound == 0) {
+				document.getElementById("out_28").value = ratio.toFixed(6);
 				document.getElementById("out_29").value = "可以破防";
-			else
+			}
+			else {
+				document.getElementById("out_28").value = ratio_no_attack.toFixed(6);
 				document.getElementById("out_29").value = "恰可破防";
+			}
 			}
 		}
 	</script>
@@ -654,6 +669,7 @@ a {
 
 			var luk_level, str_level, dex_level, chance_level, maxmin_level, boss_level, total_level, ignore_level;
 			var ratio = 0.99999;
+			var ratio_no_attack;
 			for (i=0; i<57; i++)
 				for (j=0; j<chance_bound; j++)
 					for (k=0; k<11; k++)
@@ -670,6 +686,7 @@ a {
 										total_level = M_bosstotal[l][1];
 										ignore_level = m;
 										ratio = R_attribute[i] * R_critical[j][k] * R_damage[l] * R_attack[m];
+										ratio_no_attack = R_attribute[i] * R_critical[j][k] * R_damage[l]; 
 										}
 
 			document.getElementById("out_30").value = luk_level;
@@ -680,11 +697,14 @@ a {
 			document.getElementById("out_35").value = total_level;
 			document.getElementById("out_36").value = boss_level;
 			document.getElementById("out_37").value = ignore_level;
-			document.getElementById("out_38").value = ratio.toFixed(6);
-			if (ignore_bound == 0)
+			if (ignore_bound == 0) {
+				document.getElementById("out_38").value = ratio.toFixed(6);
 				document.getElementById("out_39").value = "可以破防";
-			else
+			}
+			else {
+				document.getElementById("out_38").value = ratio_no_attack.toFixed(6);
 				document.getElementById("out_39").value = "恰可破防";
+			}
 			}
 		}
 	</script>
